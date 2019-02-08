@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<style>
+html {
+    text-align: center;
+    font-family: monospace;
+    color: #2f3640;
+}
+.divider {
+    position: static;
+    background-color: #dcdde1;
+    margin: auto;
+    width: 25%;
+    height: 50%;
+    border: 3px solid rgb(2, 0, 0);
+    padding: 25px;
+    border-radius: 20px;
+}
+.button {
+    background-color: #e84118;
+    border: 3px solid #c23616;
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+}
+.input {
+    background-color: #fbc531;
+    border: 3px solid #fbc531;
+    border-radius: 20px;
+    text-align: center;
+    color: #192a56;
+}
+.title {
+    background-color: #4cd137;
+    margin: auto;
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    padding: 10px;
+   
+}
+</style>
+<html>
+
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class = "divider">
+<div class = "title">
+    <h2>Tip App</h2>
+
+
+<p>Total Amount:</p> <input class = "input" id="bill_amount" placeholder = "Amount plus tax" required>
+<p>Tip (Percentage):</p> <input class = "input" id="tip_amount" placeholder = "Percentage" required>
+
+<br>
+<button class = "button" id="btn1">Calculate Tip</button>
+<br>
+<p>Tip Amount: <div id = "result1"></div></p>
+<p>Total Amount + Tip: <div id = "result2"></div></p>
+<form name="reset" id="reset"><button class = "button" onClick="clear()">Start Over</button></form>
+</div>
+</div>
+</div>
+<script>
+// Conversion1 result 1
+
+function calculateTips() {
+    var totalAmountOfBill = parseInt(document.getElementById('bill_amount').value); 
+    var tip = parseInt((document.getElementById('tip_amount').value))/100; 
+    var totalTip = totalAmountOfBill * tip;
+    var totalTipToPrint = "$" + totalTip;
+    var tipPlusAmount = totalAmountOfBill + totalTip;
+    var tipPlusAmountToPrint = "$" + tipPlusAmount;
+
+    document.getElementById('result1').innerHTML  = totalTipToPrint;
+    document.getElementById('result2').innerHTML  = tipPlusAmountToPrint;
+}
+ 
+document.getElementById('btn1').addEventListener('click', calculateTips);
+
+function clear()
+{   
+   document.getElementById("reset").reset();
+}
+
+</script>
+</body>
+</html>
